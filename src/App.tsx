@@ -1,25 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {  BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 
+import './App.css';
+import { User } from './components/User';
+import {  QueryClientProvider,useQueryClient,useQuery,QueryClient } from 'react-query';
+import { UserDetails } from './components/UserDetails';
+import MenuExampleInvertedSecondary from './components/Headers';
+import ContactUs from './components/ContactUs';
+import AboutUs from './components/AboutUs';
+import SignUp from './components/SignUp';
+import { LogIn } from './components/LogIn';
+
+
+const queryClient=new QueryClient();
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+   {/* <MenuExampleInvertedSecondary/> */}
+    <QueryClientProvider client={queryClient}>
+    <Router>
+    {/* <MenuExampleInvertedSecondary/> */}
+    <Routes>
+      <Route path='/' element={<SignUp/>}></Route>
+      <Route path='/login' element={<LogIn/>}></Route>
+      {/* <Route path='/user/'></Route> */}
+      <Route path='/user/:userId' element={<UserDetails/>}></Route>
+      <Route path='/home' element={<User/>}></Route>
+      <Route path='/ContactUs' element={<ContactUs/>}></Route>
+      <Route path='/AboutUs' element={<AboutUs/>}></Route>
+    </Routes>
+    </Router>
+    </QueryClientProvider>
+    </> 
   );
 }
 
