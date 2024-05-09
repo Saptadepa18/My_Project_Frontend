@@ -27,16 +27,7 @@ export const UserDetails: React.FC= ()=>{
     
         uniqueData?.filter((user)=> userId && user.id===parseInt(userId))
         .map((user)=> (
-            // <div className="ui three column grid" key={user.id}>
-            //     <div className="column">
-            //         <div className="ui fluid card">
-            //             <div className="content">
-            //                <a className="header">{user.firstName}  {user.lastName}</a>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </div>
-      
+
             <div className="ui segment" key={user.id}>
                 
   <div className="ui two column very relaxed grid">
@@ -70,9 +61,6 @@ export const UserDetails: React.FC= ()=>{
         <div className="header">
                Skill sets
             </div>
-        {/* {user.skills.map((skill)=>{
-            <p>{skill}</p>
-        })} */}
 
         <ul className="list">
       <li><p><div className="header">Skill1:</div> {user.skills[0]}</p></li>

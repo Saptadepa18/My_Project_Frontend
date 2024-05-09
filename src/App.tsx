@@ -1,6 +1,7 @@
 import React from 'react';
 import {  BrowserRouter as Router,Routes,Route} from 'react-router-dom';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import './App.css';
 import { User } from './components/User';
 import {  QueryClientProvider,useQueryClient,useQuery,QueryClient } from 'react-query';
@@ -18,6 +19,7 @@ function App() {
     <>
    {/* <MenuExampleInvertedSecondary/> */}
     <QueryClientProvider client={queryClient}>
+    {/* <ToastContainer/> */}
     <Router>
     {/* <MenuExampleInvertedSecondary/> */}
     <Routes>

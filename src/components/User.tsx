@@ -1,8 +1,6 @@
-// import axios from "axios"
+
 import React from "react"
 import axios from "axios"
-// const axios=require('axios')
-// const React=require('react')
 import { useQueryClient,useQuery, QueryClient } from "react-query"
 import { Link } from "react-router-dom"
 import { UserStore } from "../states/UserStore"
@@ -28,11 +26,9 @@ export const User : React.FC = ()=>{
     const queryClient=useQueryClient();
     const userState=UserStore();
 
-    // const accessToken=
-    // "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3lrcmlzaG5hIiwiaWF0IjoxNzA5MTgzNDYwLCJleHAiOjE3MDkxODcwNjB9.evlR29yLhEWrrmKDuEbdjbghJ5UvOOcmdYzsM63IgTw"
-
     const accessToken=localStorage.getItem("token");
-    const apiUrl="http://localhost:8080/users";
+    // const apiUrl="http://localhost:8080/users";
+    const apiUrl="http://localhost:3001/users";
 
     const authAcios= axios.create({
         baseURL: apiUrl,

@@ -2,8 +2,10 @@ import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {useFormik} from "formik"
 import { LogInSchema, SignUpSchema } from '../schemas';
+import { toast } from "react-toastify";
 import axios from 'axios';
 import { useMutation } from 'react-query';
+
 
 interface FormValues{
     userName: string,
@@ -31,11 +33,14 @@ export const LogIn: React.FC=()=>{
 
       const obSubmit1=async(values:FormValues)=>{
         let response="";
-        axios.post("http://localhost:8080/login",values).then((res:any)=>{
+        // axios.post("http://localhost:8080/login",values).then((res:any)=>{
+          axios.post("http://localhost:3001/auth/login",values).then((res:any)=>{
             response=res;
             console.log(res.data.token)
+            console.log(res.data);
+            
             localStorage.setItem("token",res.data.token);
-            localStorage.setItem("currId",res.data.currentId);
+            localStorage.setItem("currId",res.data.id);
             localStorage.setItem("role",res.data.role);
         }).catch((err)=>{
             console.log(err);
@@ -49,7 +54,7 @@ export const LogIn: React.FC=()=>{
 
       const {values,errors,touched,handleBlur,handleChange,handleSubmit}=useFormik({
         initialValues: initialValues,
-        // validationSchema:SignUpSchema,
+        validationSchema:SignUpSchema,
         onSubmit:(values,action)=>{
             console.log(values);
             mutate(values,{
@@ -68,18 +73,13 @@ export const LogIn: React.FC=()=>{
                   navigate("/home");
                 }
                 else{
-                  alert("Please enter the correct userName or Password")
+                  toast.error("please enter the correct userName or Password", { position: "top-center" });
                 }
                 action.resetForm();
                 },500);
                 
               }
             });
-            // mutate(values);
-            // const currId=localStorage.getItem("currId");
-            // navigate(`/user/${currId}`)
-            // navigate("/home");
-            // action.resetForm();
         }
       })
     return (

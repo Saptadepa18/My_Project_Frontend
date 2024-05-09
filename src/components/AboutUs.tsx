@@ -6,7 +6,6 @@ export const AboutUs = () => {
     <MenuExampleInvertedSecondary/>
     <div className="heading">
         <h1>About Us</h1>
-        {/* <p>Who we are</p> */}
         <p>We are a team of passionate individuals dedicated to providing the best user data services available. With years of experience and expertise in data management, we strive to deliver accurate, reliable, and secure user information to empower businesses and individuals alike</p>
     </div>
     <div className="container">

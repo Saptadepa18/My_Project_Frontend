@@ -11,9 +11,6 @@ const MenuExampleInvertedSecondary: React.FC = () => {
     setActiveItem(name);
     console.log(name);
     navigate(`/${name}`);
-    // <Link to={`/${name}`}/>
-    // Handle navigation or any other action here
-    // Example: navigate(`/route/${name}`);
   };
  
   return (
@@ -38,9 +35,7 @@ const MenuExampleInvertedSecondary: React.FC = () => {
         <MenuItem
           name='Log out'
           active={activeItem === 'Log out'}
-          // onClick={() => handleItemClick('login')}
           onClick={()=>{
-            // localStorage.setItem("token","");
             navigate("/login");
             localStorage.removeItem("token");
             localStorage.removeItem("currId");
