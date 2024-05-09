@@ -44,7 +44,8 @@ const SignUp: React.FC = () => {
   const obSubmit1=async(values:FormValues)=>{
     try{
       console.log("Signup called");
-        const response= await axios.post("http://localhost:8080",values);
+        // const response= await axios.post("http://localhost:8080",values);
+        const response= await axios.post("http://localhost:3001/register",values);
         return response.data;
     }catch(error)
     {

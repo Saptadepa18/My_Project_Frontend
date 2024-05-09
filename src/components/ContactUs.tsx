@@ -2,6 +2,7 @@ import { useFormik } from "formik"
 import { ContactUsSchema } from "../schemas";
 import MenuExampleInvertedSecondary from "./Headers";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { useMutation } from "react-query";
 
 interface FormValues{
@@ -30,16 +31,17 @@ export const ContactUs = () => {
             mutate(values);
             console.log(values)
             action.resetForm();
+            toast.success("Form submitted successfully", { position: "top-center" });
+
         }
     })
 
     const onSubmit1=async(values:FormValues)=>{
         try{
-            const response= await axios.post("http://localhost:8080/contact-us",values);
+            const response= await axios.post("http://localhost:3001/contacts",values);
             return response.data;
         }catch(error)
         {
-            // throw new Error("Error submitting form:");
             console.log(error);
         }
     }
